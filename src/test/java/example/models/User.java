@@ -1,25 +1,22 @@
 package example.models;
 
-import org.slieb.soy.annotations.Soy;
+import com.geniussports.soy.annotations.Soy;
 
 
 @Soy
 @Soy.Template("example.User")
 public class User {
 
+    @Soy.Field("Id")
+    public final String id;
+    @Soy.Field("IsHuman")
+    public boolean isHuman = false;
+    private String name;
+    private String email;
+
     public User(String id) {
         this.id = id;
     }
-
-    @Soy.Field("Id")
-    public final String id;
-
-    @Soy.Field("IsHuman")
-    public boolean isHuman = false;
-
-    private String name;
-
-    private String email;
 
     @Soy.Method("Name")
     public String getName() {

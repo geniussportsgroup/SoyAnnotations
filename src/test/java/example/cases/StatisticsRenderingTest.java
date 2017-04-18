@@ -1,13 +1,13 @@
 package example.cases;
 
+import com.geniussports.soy.Loader;
+import com.geniussports.soy.context.RendererFactoryContext;
+import com.geniussports.soy.factories.rendering.Renderer;
 import com.google.inject.Injector;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import example.models.Statistics;
 import org.junit.Test;
-import org.slieb.soy.Loader;
-import org.slieb.soy.context.RendererFactoryContext;
-import org.slieb.soy.factories.rendering.Renderer;
 
 import static org.junit.Assert.assertEquals;
 

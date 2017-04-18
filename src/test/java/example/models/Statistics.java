@@ -1,6 +1,6 @@
 package example.models;
 
-import org.slieb.soy.annotations.Soy;
+import com.geniussports.soy.annotations.Soy;
 
 @Soy
 @Soy.Template("models.StatisticsTemplate")

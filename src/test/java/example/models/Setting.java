@@ -1,9 +1,9 @@
 package example.models;
 
+import com.geniussports.soy.annotations.CustomRenderer;
+import com.geniussports.soy.annotations.Soy;
+import com.geniussports.soy.context.RendererFactoryContext;
 import example.renderer.SettingsRenderer;
-import org.slieb.soy.annotations.CustomRenderer;
-import org.slieb.soy.annotations.Soy;
-import org.slieb.soy.context.RendererFactoryContext;
 
 import static java.lang.String.format;
 

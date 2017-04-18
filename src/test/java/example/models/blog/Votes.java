@@ -1,6 +1,6 @@
 package example.models.blog;
 
-import org.slieb.soy.annotations.Soy;
+import com.geniussports.soy.annotations.Soy;
 
 @Soy
 public class Votes {

@@ -1,10 +1,9 @@
 package example.renderer;
 
-
+import com.geniussports.soy.context.RendererFactoryContext;
+import com.geniussports.soy.factories.rendering.Renderer;
+import com.geniussports.soy.factories.rendering.RendererFactoryContextAware;
 import example.models.Setting;
-import org.slieb.soy.context.RendererFactoryContext;
-import org.slieb.soy.factories.rendering.Renderer;
-import org.slieb.soy.factories.rendering.RendererFactoryContextAware;
 
 import javax.annotation.Nullable;
 

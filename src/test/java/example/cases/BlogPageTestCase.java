@@ -1,13 +1,12 @@
 package example.cases;
 
-
+import com.geniussports.soy.Loader;
+import com.geniussports.soy.context.JsonDataFactoryContext;
+import com.geniussports.soy.context.SoyValueFactoryContext;
 import com.google.inject.Injector;
 import example.models.blog.BlogPostsPage;
 import org.junit.Before;
 import org.junit.Test;
-import org.slieb.soy.Loader;
-import org.slieb.soy.context.JsonDataFactoryContext;
-import org.slieb.soy.context.SoyValueFactoryContext;
 
 import static example.assertions.BlogPageAssertions.assertBlogPostPageJsonEquals;
 import static example.assertions.BlogPageAssertions.assertBlogPostPageSoyDataEquals;

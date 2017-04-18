@@ -1,9 +1,9 @@
 package example.models;
 
+import com.geniussports.soy.annotations.CustomRenderer;
+import com.geniussports.soy.annotations.Soy;
+import com.geniussports.soy.context.RendererFactoryContext;
 import example.renderer.SettingsRenderer;
-import org.slieb.soy.annotations.CustomRenderer;
-import org.slieb.soy.annotations.Soy;
-import org.slieb.soy.context.RendererFactoryContext;
 
 import java.util.Collection;
 
@@ -19,6 +19,11 @@ public class Settings extends Setting<Boolean> {
     @Soy.Field("SpecialSettings")
     public Collection<Setting<?>> SpecialSettings;
 
+    @Override
+    public String toString(RendererFactoryContext factoryContext) {
+        return format("{ %s : %s, GeneralSettings: %s, SpecialSettings: %s}", Name, factoryContext.render(Value),
+                      renderSettingsCollection(factoryContext, GeneralSettings), renderSettingsCollection(factoryContext, SpecialSettings));
+    }
 
     private String renderSettingsCollection(RendererFactoryContext factoryContext, Collection<Setting<?>> settings) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -35,15 +40,6 @@ public class Settings extends Setting<Boolean> {
             stringBuilder.append("null");
         }
         return stringBuilder.toString();
-    }
-
-    @Override
-    public String toString(RendererFactoryContext factoryContext) {
-        return format("{ %s : %s, GeneralSettings: %s, SpecialSettings: %s}",
-                Name,
-                factoryContext.render(Value),
-                renderSettingsCollection(factoryContext, GeneralSettings),
-                renderSettingsCollection(factoryContext, SpecialSettings));
     }
 }
 

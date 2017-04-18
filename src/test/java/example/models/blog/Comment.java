@@ -1,8 +1,7 @@
 package example.models.blog;
 
-
+import com.geniussports.soy.annotations.Soy;
 import example.models.User;
-import org.slieb.soy.annotations.Soy;
 
 import java.util.List;
 

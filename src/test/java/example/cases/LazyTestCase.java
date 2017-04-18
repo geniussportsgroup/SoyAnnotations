@@ -1,39 +1,13 @@
 package example.cases;
 
+import com.geniussports.soy.Loader;
+import com.geniussports.soy.annotations.Soy;
+import com.geniussports.soy.context.SoyValueFactoryContext;
 import com.google.inject.Injector;
 import com.google.template.soy.data.SoyValue;
 import org.junit.Test;
-import org.slieb.soy.Loader;
-import org.slieb.soy.annotations.Soy;
-import org.slieb.soy.context.SoyValueFactoryContext;
 
 public class LazyTestCase {
-
-    @Soy
-    @Soy.Dynamic
-    public static class Node {
-
-        @Soy.Field("Name")
-        public String name;
-
-        @Soy.Field("Next")
-        @Soy.Dynamic
-        public Node next;
-
-        @Override
-        public String toString() {
-            StringBuilder b = new StringBuilder();
-            b.append(name).append(":");
-            if (next != null) {
-                b.append("[")
-                 .append(next.toString())
-                 .append("]");
-            } else {
-                b.append("null");
-            }
-            return b.toString();
-        }
-    }
 
     public Node createChain(Integer count,
                             Node lastNode) {
@@ -76,5 +50,26 @@ public class LazyTestCase {
         SoyValueFactoryContext context = injector.getInstance(SoyValueFactoryContext.class);
         Node node = createSelfReferenceChain(10);
         SoyValue soyData = context.apply(node);
+    }
+
+    @Soy
+    @Soy.Dynamic
+    public static class Node {
+
+        @Soy.Field("Name") public String name;
+
+        @Soy.Field("Next") @Soy.Dynamic public Node next;
+
+        @Override
+        public String toString() {
+            StringBuilder b = new StringBuilder();
+            b.append(name).append(":");
+            if (next != null) {
+                b.append("[").append(next.toString()).append("]");
+            } else {
+                b.append("null");
+            }
+            return b.toString();
+        }
     }
 }

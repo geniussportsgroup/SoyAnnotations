@@ -1,13 +1,12 @@
 package example.cases;
 
-
+import com.geniussports.soy.Loader;
+import com.geniussports.soy.annotations.CustomConverter;
+import com.geniussports.soy.annotations.Soy;
+import com.geniussports.soy.context.SoyValueFactoryContext;
+import com.geniussports.soy.meta.MetaConverter;
 import com.google.inject.Injector;
 import org.junit.Test;
-import org.slieb.soy.Loader;
-import org.slieb.soy.annotations.CustomConverter;
-import org.slieb.soy.annotations.Soy;
-import org.slieb.soy.context.SoyValueFactoryContext;
-import org.slieb.soy.meta.MetaConverter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +14,13 @@ import java.util.Map;
 public class CustomConverterTestCase {
 
     private final Injector injector = Loader.getFullInjector();
+
+    @Test
+    public void testCustomConverter() {
+        SoyValueFactoryContext context = injector.getInstance(SoyValueFactoryContext.class);
+        Example example = new Example("John", "john@domain.com");
+        Object object = context.apply(example);
+    }
 
     public static class ExampleToMapConverter implements MetaConverter {
 
@@ -32,7 +38,6 @@ public class CustomConverterTestCase {
 
     }
 
-
     @Soy
     @CustomConverter(ExampleToMapConverter.class)
     public static class Example {
@@ -47,12 +52,5 @@ public class CustomConverterTestCase {
             this.userEmail = userEmail;
         }
 
-    }
-
-    @Test
-    public void testCustomConverter() {
-        SoyValueFactoryContext context = injector.getInstance(SoyValueFactoryContext.class);
-        Example example = new Example("John", "john@domain.com");
-        Object object = context.apply(example);
     }
 }
